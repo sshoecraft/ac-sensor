@@ -2,13 +2,13 @@
 
 ## Project: ac-sensor
 **GitHub Repository**: ac-sensor  
-**Description**: ESP32-C3 CAN Bus + I2C sensor board with custom RJ45 pinout
+**Description**: ESP32-C3 CAN Bus + 4x JST sensor board with custom RJ45 pinout
 
 ## Current Tasks (June 2, 2025)
 
 ### 🔄 Active Tasks
 - [ ] **Component Selection** - Verify JLCPCB part availability and costs  
-- [ ] **PCB Layout** - Route the PCB with CAN + I2C interfaces
+- [ ] **PCB Layout** - Route the PCB with CAN + 4x JST sensor interfaces
 - [ ] **Design Rule Check** - Validate against JLCPCB manufacturing specs
 - [ ] **Generate Manufacturing Files** - Gerbers, drill files, BOM, CPL
 
@@ -18,6 +18,7 @@
 - [x] **Component Selection Update** - Switched to terminal blocks, added boost converter (2025-06-02)
 - [x] **PCB Schematic Design** - Complete KiCad schematic with custom RJ45 pinout (2025-06-02)
 - [x] **Hardware Directory Structure** - Created KiCad project files and directories (2025-06-02)
+- [x] **Schematic Correction** - Added missing 4x JST sensor connectors to match prototype (2025-06-02)
 
 ### ⚡ High Priority
 1. Component verification for JLCPCB availability
@@ -34,6 +35,12 @@
   - I2C pull-up voltage selection (3.3V vs 5V)
   - Programming interface pinout confirmed
   - Status LED current limiting resistor values
+- **Corrected from prototype analysis (2025-06-02)**:
+  - **CRITICAL**: Added missing 4x JST 2.0mm sensor connectors (VCC/GND/D0-D3)
+  - CAN RX protection: TJA1050 RXD → 10kΩ resistor → GPIO7 (D7)
+  - CAN TX: GPIO6 (D6) → TJA1050 TXD
+  - Changed to 5V power supply (AMS1117-5.0) for sensor compatibility
+  - Removed I2C interface from RJ45 (not used in actual design)
 
 ### 📝 Notes
 - Reference design shows compact form factor with ESP32 module
@@ -41,26 +48,40 @@
 - Board dimensions approximately 80mm x 30mm
 - Red enclosure suggests this is for industrial/prototyping use
 - **Schematic Design Complete**: Full electrical design with all components and connections
+- **Prototype Verified**: Schematic now matches actual implementation in photo
 
 ### 🎯 Success Criteria
 - [x] Complete schematic design with all components
-- [x] Custom RJ45 pinout implementation
-- [x] Proper GPIO assignments and signal routing
+- [x] 4x JST sensor connector implementation
+- [x] CAN bus interface with protection resistor
+- [x] Proper GPIO assignments and signal routing (D0-D3, D6, D7)
 - [ ] PCB passes JLCPCB DRC checks
 - [ ] All components available in JLCPCB parts library
-- [ ] Manufacturing cost under $15 per board (qty 10)
+- [ ] Manufacturing cost under $12 per board (qty 10)
 - [ ] Board size matches reference design dimensions
 - [ ] Proper CAN bus termination and signal integrity
 
 ### 📊 Project Status
-**Schematic Design: ✅ COMPLETE**
+**Schematic Design: ✅ COMPLETE & VERIFIED**
 - ESP32-C3-MINI-1 microcontroller
-- TJA1050 CAN transceiver  
-- AMS1117-3.3 voltage regulator
-- Custom RJ45 pinout (Power + CAN + I2C)
-- Programming interface
-- Status LEDs and control buttons
-- Complete power management
-- All nets and connections defined
+- TJA1050 CAN transceiver with 10kΩ input protection
+- AMS1117-5.0 voltage regulator (5V for sensors)
+- **4x JST 2.0mm PH connectors** (VCC/GND/Digital Signal)
+- RJ45 connector for CAN Bus (pins 1-4: +5V/GND/CAN-H/CAN-L)
+- Programming interface (4-pin header)
+- Reset and boot buttons
+- Complete power management and protection
+
+### 📌 Key Design Features
+**JST Sensor Interface:**
+- J3: VCC(5V), GND, D0 (GPIO0)
+- J4: VCC(5V), GND, D1 (GPIO1)  
+- J5: VCC(5V), GND, D2 (GPIO2)
+- J6: VCC(5V), GND, D3 (GPIO3)
+
+**CAN Bus Interface:**
+- CAN TX: GPIO6 (D6) → TJA1050
+- CAN RX: TJA1050 → 10kΩ → GPIO7 (D7)
+- RJ45 Pins: 1(+5V), 2(GND), 3(CAN-H), 4(CAN-L)
 
 **Next Phase: PCB Layout and Manufacturing**
