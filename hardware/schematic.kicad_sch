@@ -7,12 +7,12 @@
   (title_block
     (title "ESP32-C3 CAN Bus + 4x JST Sensor Board")
     (date "2025-06-02")
-    (rev "v1.1")
+    (rev "v1.2")
     (company "AC-Sensor Project")
-    (comment 1 "Custom RJ45 pinout + 4x JST sensor inputs")
+    (comment 1 "JST connectors on both sides + CAN via RJ45")
     (comment 2 "Based on actual prototype implementation")
     (comment 3 "80mm x 30mm compact form factor")
-    (comment 4 "ESP32-C3 with CAN + 4x JST connectors (VCC/GND/D0-D3)")
+    (comment 4 "ESP32-C3 with CAN + 4x JST (2 per side)")
   )
 
   ; Main microcontroller
@@ -105,71 +105,72 @@
     )
   )
 
-  ; JST Sensor Connectors (4x JST 2.0mm 3-pin: VCC, GND, Digital Signal)
-  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 130 0) (unit 1)
+  ; JST Sensor Connectors - LEFT SIDE (2 connectors)
+  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 70 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ac001234-ac01-ac01-ac01-ac0123456789)
-    (property "Reference" "J3" (at 25 125 0)
+    (property "Reference" "J3" (at 25 65 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "SENSOR_1" (at 25 137.5 0)
+    (property "Value" "SENSOR_1" (at 25 77.5 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 130 0)
+    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 70 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 25 130 0)
+    (property "Datasheet" "~" (at 25 70 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
 
-  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 150 0) (unit 1)
+  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 90 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ac002345-ac02-ac02-ac02-ac023456789a)
-    (property "Reference" "J4" (at 25 145 0)
+    (property "Reference" "J4" (at 25 85 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "SENSOR_2" (at 25 157.5 0)
+    (property "Value" "SENSOR_2" (at 25 97.5 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 150 0)
+    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 90 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 25 150 0)
+    (property "Datasheet" "~" (at 25 90 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
 
-  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 170 0) (unit 1)
+  ; JST Sensor Connectors - RIGHT SIDE (2 connectors)
+  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 175 70 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ac003456-ac03-ac03-ac03-ac03456789ab)
-    (property "Reference" "J5" (at 25 165 0)
+    (property "Reference" "J5" (at 175 65 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "SENSOR_3" (at 25 177.5 0)
+    (property "Value" "SENSOR_3" (at 175 77.5 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 170 0)
+    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 175 70 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 25 170 0)
+    (property "Datasheet" "~" (at 175 70 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
 
-  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 190 0) (unit 1)
+  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 175 90 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ac004567-ac04-ac04-ac04-ac04567890ab)
-    (property "Reference" "J6" (at 25 185 0)
+    (property "Reference" "J6" (at 175 85 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "SENSOR_4" (at 25 197.5 0)
+    (property "Value" "SENSOR_4" (at 175 97.5 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 190 0)
+    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 175 90 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 25 190 0)
+    (property "Datasheet" "~" (at 175 90 0)
       (effects (font (size 1.27 1.27)) hide)
     )
   )
@@ -267,10 +268,10 @@
   ; Power nets
   (net (code 1) (name "+5V")
     (node (ref U3) (pin 2))  ; 5V output from regulator
-    (node (ref J3) (pin 1))  ; Sensor 1 VCC
-    (node (ref J4) (pin 1))  ; Sensor 2 VCC
-    (node (ref J5) (pin 1))  ; Sensor 3 VCC
-    (node (ref J6) (pin 1))  ; Sensor 4 VCC
+    (node (ref J3) (pin 1))  ; Sensor 1 VCC (Left side)
+    (node (ref J4) (pin 1))  ; Sensor 2 VCC (Left side)
+    (node (ref J5) (pin 1))  ; Sensor 3 VCC (Right side)
+    (node (ref J6) (pin 1))  ; Sensor 4 VCC (Right side)
     (node (ref U2) (pin 3))  ; CAN transceiver VCC
   )
 
@@ -280,10 +281,10 @@
     (node (ref U3) (pin 1))
     (node (ref C1) (pin 2))
     (node (ref C2) (pin 2))
-    (node (ref J3) (pin 2))  ; Sensor 1 GND
-    (node (ref J4) (pin 2))  ; Sensor 2 GND
-    (node (ref J5) (pin 2))  ; Sensor 3 GND
-    (node (ref J6) (pin 2))  ; Sensor 4 GND
+    (node (ref J3) (pin 2))  ; Sensor 1 GND (Left side)
+    (node (ref J4) (pin 2))  ; Sensor 2 GND (Left side)
+    (node (ref J5) (pin 2))  ; Sensor 3 GND (Right side)
+    (node (ref J6) (pin 2))  ; Sensor 4 GND (Right side)
     (node (ref SW1) (pin 2))
     (node (ref SW2) (pin 2))
     (node (ref J1) (pin 2))  ; RJ45 GND
@@ -298,22 +299,22 @@
   ; Digital signal connections as per photo
   (net (code 4) (name "D0")
     (node (ref U1) (pin GPIO0))
-    (node (ref J3) (pin 3))  ; Sensor 1 signal
+    (node (ref J3) (pin 3))  ; Sensor 1 signal (Left side)
   )
 
   (net (code 5) (name "D1")
     (node (ref U1) (pin GPIO1))
-    (node (ref J4) (pin 3))  ; Sensor 2 signal
+    (node (ref J4) (pin 3))  ; Sensor 2 signal (Left side)
   )
 
   (net (code 6) (name "D2")
     (node (ref U1) (pin GPIO2))
-    (node (ref J5) (pin 3))  ; Sensor 3 signal
+    (node (ref J5) (pin 3))  ; Sensor 3 signal (Right side)
   )
 
   (net (code 7) (name "D3")
     (node (ref U1) (pin GPIO3))
-    (node (ref J6) (pin 3))  ; Sensor 4 signal
+    (node (ref J6) (pin 3))  ; Sensor 4 signal (Right side)
   )
 
   ; CAN connections as per photo
@@ -376,26 +377,26 @@
   )
 
   ; Text annotations
-  (text "JST Sensor Connectors:\nJ3-J6: VCC (5V), GND, Digital Signal\nConnected to ESP32 GPIO0-GPIO3 (D0-D3)" 
-    (at 25 210 0)
+  (text "JST Sensor Layout:\nLEFT SIDE: J3 (D0), J4 (D1)\nRIGHT SIDE: J5 (D2), J6 (D3)\nEach: VCC (5V), GND, Digital Signal" 
+    (at 25 140 0)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid text001)
   )
 
   (text "CAN Interface:\n• CAN TX: GPIO6 (D6) → TJA1050\n• CAN RX: TJA1050 → 10kΩ → GPIO7 (D7)\n• 10kΩ resistor for input protection" 
-    (at 120 210 0)
+    (at 120 140 0)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid text002)
   )
 
   (text "RJ45 Pinout:\n1: +5VDC Input\n2: GND\n3: CAN-H\n4: CAN-L\n5-8: Available" 
-    (at 200 210 0)
+    (at 200 140 0)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid text003)
   )
 
-  (text "Based on actual prototype photo:\n• 4x JST 2.0mm connectors\n• ESP32-C3 module\n• CAN transceiver with protection\n• 5V power input via RJ45" 
-    (at 25 240 0)
+  (text "Connector Placement:\n• 2x JST on LEFT side (J3, J4)\n• 2x JST on RIGHT side (J5, J6)\n• Balanced layout for cable management" 
+    (at 25 160 0)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid text004)
   )
