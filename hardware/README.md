@@ -2,25 +2,13 @@
 
 This directory contains the complete KiCad design files for the ESP32-C3 CAN Bus + 4x JST sensor board.
 
-## Files Structure
-
-```
-hardware/
-├── ac-sensor.kicad_pro      # KiCad project file
-├── schematic.kicad_sch       # Complete schematic design
-├── pcb.kicad_pcb            # PCB layout (placeholder)
-├── symbols/                  # Custom symbol libraries
-├── footprints/              # Custom footprint libraries
-└── gerbers/                 # Manufacturing files (generated)
-```
-
 ## Design Specifications
 
 - **Board Size**: 80mm x 30mm (compact form factor)
 - **Layers**: 2-layer PCB
 - **Thickness**: 1.6mm standard
 - **Manufacturing**: Optimized for JLCPCB automated assembly
-- **Components**: All SMD, 0805 packages where possible
+- **JST Layout**: **2 connectors per side** for balanced cable management
 
 ## Key Components
 
@@ -33,21 +21,44 @@ hardware/
 | J2 | Conn_01x04 | Pin header | Programming interface |
 | J3-J6 | JST_PH_3pin | JST 2.0mm | Sensor input connectors |
 
-## JST Sensor Connectors
+## JST Sensor Connectors Layout
 
-**4x JST 2.0mm PH Series 3-pin connectors** for external sensor inputs:
+**Balanced placement on both sides** for better cable management:
 
-| Connector | ESP32 Pin | Signal | Description |
-|-----------|-----------|--------|-------------|
-| J3 | GPIO0 (D0) | VCC, GND, D0 | Sensor 1 input |
-| J4 | GPIO1 (D1) | VCC, GND, D1 | Sensor 2 input |
-| J5 | GPIO2 (D2) | VCC, GND, D2 | Sensor 3 input |
-| J6 | GPIO3 (D3) | VCC, GND, D3 | Sensor 4 input |
+### LEFT SIDE (2 connectors)
+| Connector | ESP32 Pin | Position | Description |
+|-----------|-----------|----------|-------------|
+| **J3** | GPIO0 (D0) | Left Top | Sensor 1: VCC, GND, D0 |
+| **J4** | GPIO1 (D1) | Left Bottom | Sensor 2: VCC, GND, D1 |
 
-**JST Pinout (per connector):**
+### RIGHT SIDE (2 connectors)  
+| Connector | ESP32 Pin | Position | Description |
+|-----------|-----------|----------|-------------|
+| **J5** | GPIO2 (D2) | Right Top | Sensor 3: VCC, GND, D2 |
+| **J6** | GPIO3 (D3) | Right Bottom | Sensor 4: VCC, GND, D3 |
+
+**JST Pinout (each connector):**
 1. **VCC** - 5V power output for sensors
 2. **GND** - Ground
 3. **Signal** - Digital input to ESP32 (D0-D3)
+
+## Board Layout
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  [J3]              [POWER]    [ESP32-C3]   [TJA1050]        [RJ45]         │
+│ SENSOR1              5V         CENTER       CAN             CAN            │
+│  D0                                                                         │
+│                                                                             │
+│  [J4]                                                       [J5]           │
+│ SENSOR2                                                    SENSOR3          │
+│  D1                                                          D2             │
+│                     [RST][BOOT]                            [J6]             │
+│                                                           SENSOR4           │
+│                                        [PROG]              D3              │
+└─────────────────────────────────────────────────────────────────────────────┘
+ LEFT SIDE                    CENTER                         RIGHT SIDE
+```
 
 ## CAN Bus Interface
 
@@ -72,31 +83,30 @@ Based on the actual prototype implementation:
 
 ## GPIO Assignments
 
-| GPIO | Function | Description |
-|------|----------|-------------|
-| GPIO0 | D0 | Sensor 1 digital input |
-| GPIO1 | D1 | Sensor 2 digital input |
-| GPIO2 | D2 | Sensor 3 digital input |
-| GPIO3 | D3 | Sensor 4 digital input |
-| GPIO6 | CAN_TX | CAN transmit (D6) |
-| GPIO7 | CAN_RX | CAN receive (D7) |
-| GPIO9 | BOOT | Boot mode button |
-| GPIO20 | UART_RX | Programming RX |
-| GPIO21 | UART_TX | Programming TX |
+| GPIO | Function | Connector | Position | Description |
+|------|----------|-----------|----------|-------------|
+| GPIO0 | D0 | J3 | Left Top | Sensor 1 digital input |
+| GPIO1 | D1 | J4 | Left Bottom | Sensor 2 digital input |
+| GPIO2 | D2 | J5 | Right Top | Sensor 3 digital input |
+| GPIO3 | D3 | J6 | Right Bottom | Sensor 4 digital input |
+| GPIO6 | CAN_TX | - | Internal | CAN transmit (D6) |
+| GPIO7 | CAN_RX | - | Internal | CAN receive (D7) |
+| GPIO9 | BOOT | SW2 | Bottom Left | Boot mode button |
+| GPIO20 | UART_RX | J2 | Bottom Right | Programming RX |
+| GPIO21 | UART_TX | J2 | Bottom Right | Programming TX |
 
 ## Design Features
+
+### Balanced JST Layout
+- **Left Side**: 2x JST connectors (J3, J4) for sensors 1-2
+- **Right Side**: 2x JST connectors (J5, J6) for sensors 3-4  
+- **Benefits**: Better cable management, balanced load, easier assembly
 
 ### Power Management
 - 5V input via RJ45 connector (pin 1)
 - AMS1117-5.0 linear regulator for stable 5V supply
 - 5V provided to all JST sensor connectors (VCC pins)
 - 3.3V internal regulation for ESP32-C3
-
-### Sensor Interface
-- 4x JST 2.0mm PH series connectors
-- Each provides: 5V power, Ground, Digital signal
-- Direct connection to ESP32 GPIO pins (D0-D3)
-- Compatible with various digital sensors
 
 ### CAN Bus Interface
 - TJA1050 transceiver for robust CAN communication
@@ -105,8 +115,8 @@ Based on the actual prototype implementation:
 - Standard CAN-H/CAN-L differential signaling
 
 ### Programming Interface
-- 4-pin header for UART programming
-- Reset and boot buttons for development
+- 4-pin header (bottom right) for UART programming
+- Reset and boot buttons (bottom left) for development
 - Compatible with ESP32 programming tools
 
 ## Manufacturing Notes
@@ -135,13 +145,14 @@ The JST connectors are designed for digital sensors with these characteristics:
 - **Signal**: Digital output (3.3V/5V logic levels)
 - **Examples**: Motion sensors, proximity sensors, digital temperature sensors, limit switches
 
-## Next Steps
+## Cable Management Benefits
 
-1. **PCB Layout**: Complete component placement and routing
-2. **DRC Check**: Verify design rules compliance  
-3. **Manufacturing Files**: Generate Gerbers, drill files, BOM, CPL
-4. **Prototype**: Order initial boards for testing
-5. **Validation**: Test all interfaces and sensor compatibility
+The **2-per-side JST layout** provides several advantages:
+- **Balanced weight distribution** 
+- **Shorter cable runs** to sensors on both sides
+- **Reduced cable congestion** 
+- **Easier installation** in tight spaces
+- **Professional appearance** with organized cabling
 
 ## Version History
 
@@ -151,6 +162,11 @@ The JST connectors are designed for digital sensors with these characteristics:
   - Corrected CAN interface with 10kΩ protection resistor
   - Updated GPIO assignments (D0-D3, D6, D7)
   - Changed to 5V power supply for sensor compatibility
+- **v1.2** (2025-06-02): **JST connector placement optimization**
+  - **2x JST on LEFT side** (J3, J4 for D0, D1)
+  - **2x JST on RIGHT side** (J5, J6 for D2, D3)
+  - Balanced layout for better cable management
+  - Matches actual prototype photo layout
 
 ## References
 
@@ -160,12 +176,15 @@ The JST connectors are designed for digital sensors with these characteristics:
 - [JLCPCB Design Rules](https://jlcpcb.com/capabilities/pcb-capabilities)
 - [KiCad Documentation](https://docs.kicad.org/)
 
-## Actual Implementation Photo
+## Prototype Verification
 
-The schematic is based on analysis of the actual prototype board, which shows:
+The schematic and layout are based on analysis of the actual prototype boards, which clearly show:
 - ESP32-C3 module in center
-- 4x JST connectors on left side
+- **2x JST connectors on left side**
+- **2x JST connectors on right side**  
 - TJA1050 CAN transceiver
 - RJ45 connector on right side  
 - Reset/boot buttons
-- Compact form factor in blue enclosure
+- Compact 80x30mm form factor in enclosure
+
+This **balanced JST placement** is the optimal layout for professional sensor installations.
