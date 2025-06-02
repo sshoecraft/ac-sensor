@@ -1,0 +1,12 @@
+# Custom Footprint Library
+
+This directory contains custom KiCad footprint libraries for the AC-Sensor project.
+
+## Usage
+- Add custom footprints that are not available in standard KiCad libraries
+- Follow JLCPCB design rules and manufacturing constraints
+- Optimize for automated assembly
+
+## Custom Footprints Needed
+- Any specialized connectors
+- Modified footprints for JLCPCB assembly

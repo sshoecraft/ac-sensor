@@ -1,0 +1,12 @@
+# Custom Symbol Library
+
+This directory contains custom KiCad symbol libraries for the AC-Sensor project.
+
+## Usage
+- Add custom symbols that are not available in standard KiCad libraries
+- Follow KiCad symbol naming conventions
+- Document any custom symbols in this README
+
+## Custom Symbols Needed
+- ESP32-C3-MINI-1 (if not in standard library)
+- Custom connectors or specialized components
