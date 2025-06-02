@@ -1,0 +1,36 @@
+Comment,Designator,Footprint,LCSC Part #,Manufacturer,MPN,Package,Quantity,Unit Price,Extended Price
+"ESP32-C3 WiFi Module",U1,ESP32-C3-MINI-1,C2934545,Espressif Systems,ESP32-C3-MINI-1,SMD,1,$2.50,$2.50
+"CAN Bus Transceiver",U2,SOP-8_3.9x4.9mm_P1.27mm,C7212,NXP,TJA1050T,SOP-8,1,$0.85,$0.85
+"3.3V LDO Regulator",U3,SOT-223-3,C6186,Advanced Monolithic Systems,AMS1117-3.3,SOT-223,1,$0.08,$0.08
+"RJ45 Connector 8P8C",J1,RJ45_Amphenol_54602-x08_Horizontal,C86580,Amphenol,54602-908LF,THT,1,$0.65,$0.65
+"Programming Header 4pin",J2,PinHeader_1x04_P2.54mm_Vertical,C124375,BOOMELE,C124375,THT,1,$0.05,$0.05
+"Boot Button",SW1,SW_SPST_B3U-1000P,C318884,Omron,B3U-1000P,SMD,1,$0.15,$0.15
+"Reset Button",SW2,SW_SPST_B3U-1000P,C318884,Omron,B3U-1000P,SMD,1,$0.15,$0.15
+"Power LED Red",D1,LED_0805_2012Metric,C2286,Everlight,19-213/R6C-AL1M2VY/3T,0805,1,$0.02,$0.02
+"Status LED Green",D2,LED_0805_2012Metric,C2290,Everlight,19-213/GHC-YR1S2/3T,0805,1,$0.02,$0.02
+"CAN TX LED Yellow",D3,LED_0805_2012Metric,C2296,Everlight,19-213/Y2C-CQ2R2L/3T,0805,1,$0.02,$0.02
+"CAN RX LED Blue",D4,LED_0805_2012Metric,C72038,Everlight,19-213/BHC-XL1M2RY/3T,0805,1,$0.02,$0.02
+"TVS Diode 5V Protection",D5,SOD-323_SC-76,C85364,Nexperia,PESD5V0S1BA,SOD-323,1,$0.12,$0.12
+"TVS Diode CAN Protection",D6,SOD-323_SC-76,C7420,Nexperia,PESD1CAN,SOD-323,2,$0.15,$0.30
+"120R CAN Termination",R1,R_0805_2012Metric,C17909,Uniroyal Elec,0805W8F1200T5E,0805,1,$0.01,$0.01
+"10K Pull-up Boot",R2,R_0805_2012Metric,C17414,Uniroyal Elec,0805W8F1002T5E,0805,1,$0.01,$0.01
+"10K Pull-up Reset",R3,R_0805_2012Metric,C17414,Uniroyal Elec,0805W8F1002T5E,0805,1,$0.01,$0.01
+"330R LED Current Limit",R4,R_0805_2012Metric,C17630,Uniroyal Elec,0805W8F3300T5E,0805,4,$0.01,$0.04
+"10K Pull-up CAN Silent",R5,R_0805_2012Metric,C17414,Uniroyal Elec,0805W8F1002T5E,0805,1,$0.01,$0.01
+"4.7K I2C Pull-up SDA",R6,R_0805_2012Metric,C17673,Uniroyal Elec,0805W8F4701T5E,0805,1,$0.01,$0.01
+"4.7K I2C Pull-up SCL",R7,R_0805_2012Metric,C17673,Uniroyal Elec,0805W8F4701T5E,0805,1,$0.01,$0.01
+"470uF Input Filter",C1,CP_Radial_D5.0mm_P2.00mm,C116313,Rubycon,16YXF470MEFCT1,THT,1,$0.15,$0.15
+"22uF Power Supply Filter",C2,C_0805_2012Metric,C45783,Samsung Electro-Mechanics,CL21A226MQQNNNE,0805,2,$0.02,$0.04
+"100nF Decoupling",C3,C_0805_2012Metric,C49678,YAGEO,CC0805KRX7R9BB104,0805,5,$0.01,$0.05
+"10uF Decoupling",C4,C_0805_2012Metric,C15850,Samsung Electro-Mechanics,CL21A106KAYNNNE,0805,2,$0.02,$0.04
+"Crystal 40MHz",Y1,Crystal_SMD_3225-4Pin_3.2x2.5mm,C112573,Yangxing Tech,X322540MOB4SI,SMD-3225,1,$0.08,$0.08
+"Crystal Load Capacitor 12pF",C5,C_0805_2012Metric,C1804,YAGEO,CC0805JRNPO9BN120,0805,2,$0.01,$0.02
+"Polyfuse 500mA",F1,Fuse_0805_2012Metric,C369872,Littelfuse,0ZCJ0050FF2E,0805,1,$0.12,$0.12
+"Jumper CAN Termination",JP1,PinHeader_1x02_P2.54mm_Vertical,C124375,BOOMELE,C124375,THT,1,$0.02,$0.02
+"Jumper I2C Voltage",JP2,PinHeader_1x03_P2.54mm_Vertical,C180248,BOOMELE,C180248,THT,1,$0.03,$0.03
+
+Total Components: 31
+Estimated Component Cost: $6.25
+JLCPCB Assembly Cost: ~$3.50
+PCB Cost (qty 10): ~$1.50
+Total per board: ~$11.25
