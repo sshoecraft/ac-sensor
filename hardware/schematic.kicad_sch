@@ -1,0 +1,403 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid e63e39d7-6ac0-4ffd-8aa3-1841a4541b55)
+
+  (paper "A4")
+
+  (title_block
+    (title "ESP32-C3 CAN Bus + 4x JST Sensor Board")
+    (date "2025-06-02")
+    (rev "v1.1")
+    (company "AC-Sensor Project")
+    (comment 1 "Custom RJ45 pinout + 4x JST sensor inputs")
+    (comment 2 "Based on actual prototype implementation")
+    (comment 3 "80mm x 30mm compact form factor")
+    (comment 4 "ESP32-C3 with CAN + 4x JST connectors (VCC/GND/D0-D3)")
+  )
+
+  ; Main microcontroller
+  (symbol (lib_id "RF_Module:ESP32-C3-MINI-1") (at 100 80 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 12345678-1234-1234-1234-123456789abc)
+    (property "Reference" "U1" (at 100 60 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "ESP32-C3-MINI-1" (at 100 62.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "RF_Module:ESP32-C3-MINI-1" (at 100 77.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf" (at 100 80 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ; CAN transceiver
+  (symbol (lib_id "Interface_CAN_LIN:TJA1050") (at 180 80 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 23456789-2345-2345-2345-23456789abcd)
+    (property "Reference" "U2" (at 170 71 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TJA1050" (at 181.5 71 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Package_SO:SO-8_3.9x4.9mm_P1.27mm" (at 180 92.5 0)
+      (effects (font (size 1.27 1.27) italic) hide)
+    )
+    (property "Datasheet" "http://www.nxp.com/documents/data_sheet/TJA1050.pdf" (at 180 80 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ; Voltage regulator
+  (symbol (lib_id "Regulator_Linear:AMS1117-5.0") (at 60 40 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 34567890-3456-3456-3456-34567890abcd)
+    (property "Reference" "U3" (at 60 33.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "AMS1117-5.0" (at 64 35 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (at 60 35 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://www.advanced-monolithic.com/pdf/ds1117.pdf" (at 62.5 46.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ; RJ45 connector
+  (symbol (lib_id "Connector:RJ45_8P8C") (at 240 80 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 45678901-4567-4567-4567-45678901abcd)
+    (property "Reference" "J1" (at 235 66 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Value" "RJ45_8P8C" (at 241.5 66 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Connector_RJ:RJ45_Amphenol_54602-x08_Horizontal" (at 240 80.5 90)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 240 80.5 90)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ; Programming connector
+  (symbol (lib_id "Connector_Generic:Conn_01x04") (at 240 40 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 56789012-5678-5678-5678-56789012abcd)
+    (property "Reference" "J2" (at 240 35 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Programming" (at 240 47.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" (at 240 40 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 240 40 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ; JST Sensor Connectors (4x JST 2.0mm 3-pin: VCC, GND, Digital Signal)
+  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 130 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid ac001234-ac01-ac01-ac01-ac0123456789)
+    (property "Reference" "J3" (at 25 125 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "SENSOR_1" (at 25 137.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 130 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 25 130 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 150 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid ac002345-ac02-ac02-ac02-ac023456789a)
+    (property "Reference" "J4" (at 25 145 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "SENSOR_2" (at 25 157.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 150 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 25 150 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 170 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid ac003456-ac03-ac03-ac03-ac03456789ab)
+    (property "Reference" "J5" (at 25 165 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "SENSOR_3" (at 25 177.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 170 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 25 170 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 25 190 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid ac004567-ac04-ac04-ac04-ac04567890ab)
+    (property "Reference" "J6" (at 25 185 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "SENSOR_4" (at 25 197.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical" (at 25 190 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 25 190 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ; CAN RX protection resistor (10k as per photo)
+  (symbol (lib_id "Device:R") (at 150 85 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid can_rx_resistor-1234-1234-1234-123456789abc)
+    (property "Reference" "R1" (at 152 85 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10k" (at 150 85 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 148.2 85 90)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 150 85 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ; Power supply capacitors
+  (symbol (lib_id "Device:C") (at 40 50 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid c1234567-c123-c123-c123-c1234567890a)
+    (property "Reference" "C1" (at 41 47.5 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "100nF" (at 41 52.5 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 41 53.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 40 50 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  (symbol (lib_id "Device:C") (at 80 50 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid c2345678-c234-c234-c234-c2345678901b)
+    (property "Reference" "C2" (at 81 47.5 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "100nF" (at 81 52.5 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 81 53.8 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 80 50 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ; Reset and Boot buttons
+  (symbol (lib_id "Switch:SW_Push") (at 40 100 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid sw123456-sw12-sw12-sw12-sw1234567890)
+    (property "Reference" "SW1" (at 41.5 97.5 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "RESET" (at 40 101.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Button_Switch_SMD:SW_SPST_CK_RS282G05A3" (at 40 95 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 40 95 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  (symbol (lib_id "Switch:SW_Push") (at 40 115 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid sw234567-sw23-sw23-sw23-sw2345678901)
+    (property "Reference" "SW2" (at 41.5 112.5 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "BOOT" (at 40 116.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Button_Switch_SMD:SW_SPST_CK_RS282G05A3" (at 40 110 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 40 110 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+  )
+
+  ; Net connections and wiring
+  
+  ; Power nets
+  (net (code 1) (name "+5V")
+    (node (ref U3) (pin 2))  ; 5V output from regulator
+    (node (ref J3) (pin 1))  ; Sensor 1 VCC
+    (node (ref J4) (pin 1))  ; Sensor 2 VCC
+    (node (ref J5) (pin 1))  ; Sensor 3 VCC
+    (node (ref J6) (pin 1))  ; Sensor 4 VCC
+    (node (ref U2) (pin 3))  ; CAN transceiver VCC
+  )
+
+  (net (code 2) (name "GND")
+    (node (ref U1) (pin GND))
+    (node (ref U2) (pin 2))
+    (node (ref U3) (pin 1))
+    (node (ref C1) (pin 2))
+    (node (ref C2) (pin 2))
+    (node (ref J3) (pin 2))  ; Sensor 1 GND
+    (node (ref J4) (pin 2))  ; Sensor 2 GND
+    (node (ref J5) (pin 2))  ; Sensor 3 GND
+    (node (ref J6) (pin 2))  ; Sensor 4 GND
+    (node (ref SW1) (pin 2))
+    (node (ref SW2) (pin 2))
+    (node (ref J1) (pin 2))  ; RJ45 GND
+    (node (ref J2) (pin 2))  ; Programming GND
+  )
+
+  (net (code 3) (name "+3V3")
+    (node (ref U1) (pin VCC))
+    (node (ref C2) (pin 1))
+  )
+
+  ; Digital signal connections as per photo
+  (net (code 4) (name "D0")
+    (node (ref U1) (pin GPIO0))
+    (node (ref J3) (pin 3))  ; Sensor 1 signal
+  )
+
+  (net (code 5) (name "D1")
+    (node (ref U1) (pin GPIO1))
+    (node (ref J4) (pin 3))  ; Sensor 2 signal
+  )
+
+  (net (code 6) (name "D2")
+    (node (ref U1) (pin GPIO2))
+    (node (ref J5) (pin 3))  ; Sensor 3 signal
+  )
+
+  (net (code 7) (name "D3")
+    (node (ref U1) (pin GPIO3))
+    (node (ref J6) (pin 3))  ; Sensor 4 signal
+  )
+
+  ; CAN connections as per photo
+  (net (code 8) (name "CAN_TX")
+    (node (ref U1) (pin GPIO6))  ; D6 as per photo
+    (node (ref U2) (pin 1))      ; TJA1050 TXD
+  )
+
+  (net (code 9) (name "CAN_RX_FILTERED")
+    (node (ref U1) (pin GPIO7))  ; D7 as per photo  
+    (node (ref R1) (pin 2))      ; Through 10k resistor
+  )
+
+  (net (code 10) (name "CAN_RX_RAW")
+    (node (ref U2) (pin 4))      ; TJA1050 RXD
+    (node (ref R1) (pin 1))      ; To 10k resistor
+  )
+
+  (net (code 11) (name "CAN_H")
+    (node (ref U2) (pin 7))
+    (node (ref J1) (pin 3))      ; RJ45 pin 3
+  )
+
+  (net (code 12) (name "CAN_L")
+    (node (ref U2) (pin 6))
+    (node (ref J1) (pin 4))      ; RJ45 pin 4
+  )
+
+  ; Power input from RJ45
+  (net (code 13) (name "VIN")
+    (node (ref U3) (pin 3))      ; Input to regulator
+    (node (ref C1) (pin 1))
+    (node (ref J1) (pin 1))      ; RJ45 pin 1 (+5V input)
+  )
+
+  ; Control signals
+  (net (code 14) (name "RESET")
+    (node (ref U1) (pin EN))
+    (node (ref SW1) (pin 1))
+  )
+
+  (net (code 15) (name "BOOT")
+    (node (ref U1) (pin GPIO9))
+    (node (ref SW2) (pin 1))
+  )
+
+  ; Programming interface
+  (net (code 16) (name "UART_TX")
+    (node (ref U1) (pin GPIO21))
+    (node (ref J2) (pin 3))
+  )
+
+  (net (code 17) (name "UART_RX") 
+    (node (ref U1) (pin GPIO20))
+    (node (ref J2) (pin 4))
+  )
+
+  (net (code 18) (name "+3V3_PROG")
+    (node (ref J2) (pin 1))  ; 3.3V for programming
+  )
+
+  ; Text annotations
+  (text "JST Sensor Connectors:\nJ3-J6: VCC (5V), GND, Digital Signal\nConnected to ESP32 GPIO0-GPIO3 (D0-D3)" 
+    (at 25 210 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid text001)
+  )
+
+  (text "CAN Interface:\n• CAN TX: GPIO6 (D6) → TJA1050\n• CAN RX: TJA1050 → 10kΩ → GPIO7 (D7)\n• 10kΩ resistor for input protection" 
+    (at 120 210 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid text002)
+  )
+
+  (text "RJ45 Pinout:\n1: +5VDC Input\n2: GND\n3: CAN-H\n4: CAN-L\n5-8: Available" 
+    (at 200 210 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid text003)
+  )
+
+  (text "Based on actual prototype photo:\n• 4x JST 2.0mm connectors\n• ESP32-C3 module\n• CAN transceiver with protection\n• 5V power input via RJ45" 
+    (at 25 240 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid text004)
+  )
+
+)
