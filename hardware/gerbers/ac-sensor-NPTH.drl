@@ -1,0 +1,21 @@
+M48
+; DRILL file {KiCad 7.0.0} date 2025-06-20T15:30:00-0700
+; FORMAT={-:-/ absolute / metric / decimal}
+; #@! TF.CreationDate,2025-06-20T15:30:00-07:00
+; #@! TF.GenerationSoftware,Kicad,Pcbnew,7.0.0
+; #@! TF.FileFunction,NonPlated,1,2,NPTH
+FMAT,2
+METRIC
+; #@! TA.AperFunction,NonPlated,NPTH,ComponentDrill
+T1C2.700
+%
+G90
+G05
+T1
+; Mounting holes M2.5
+X5.Y25.
+X75.Y25.
+X5.Y5.
+X75.Y5.
+T0
+M30

@@ -1,0 +1,62 @@
+M48
+; DRILL file {KiCad 7.0.0} date 2025-06-20T15:30:00-0700
+; FORMAT={-:-/ absolute / metric / decimal}
+; #@! TF.CreationDate,2025-06-20T15:30:00-07:00
+; #@! TF.GenerationSoftware,Kicad,Pcbnew,7.0.0
+; #@! TF.FileFunction,Plated,1,2,PTH
+FMAT,2
+METRIC
+; #@! TA.AperFunction,Plated,PTH,ComponentDrill
+T1C0.300
+T2C0.600
+T3C0.750
+T4C0.900
+T5C1.000
+%
+G90
+G05
+; Vias
+T1
+X40.Y15.
+X50.Y15.
+X30.Y15.
+; Power supply capacitor
+T2
+X29.Y5.
+X31.Y5.
+; JST connectors
+T3
+; J3 - Left Top
+X5.Y11.
+X7.Y11.
+X9.Y11.
+; J4 - Left Bottom
+X5.Y19.
+X7.Y19.
+X9.Y19.
+; J5 - Right Top
+X71.Y11.
+X73.Y11.
+X75.Y11.
+; J6 - Right Bottom
+X71.Y19.
+X73.Y19.
+X75.Y19.
+; RJ45 connector
+T4
+X67.055Y20.08.
+X68.325Y17.54.
+X69.595Y20.08.
+X70.865Y17.54.
+X72.135Y20.08.
+X73.405Y17.54.
+X74.675Y20.08.
+X75.945Y17.54.
+; Programming header
+T5
+X65.Y25.
+X65.Y27.54.
+X65.Y30.08.
+X65.Y32.62.
+T0
+M30

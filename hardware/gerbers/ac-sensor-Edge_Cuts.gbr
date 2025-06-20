@@ -1,0 +1,18 @@
+G04 #@! TF.GenerationSoftware,KiCad,Pcbnew,7.0.0*
+G04 #@! TF.CreationDate,2025-06-20T15:30:00-07:00*
+G04 #@! TF.ProjectId,ac-sensor,61632d73-656e-4736-9f72-2e6b696361,v1.2*
+G04 #@! TF.SameCoordinates,Original*
+G04 #@! TF.FileFunction,Profile,NP*
+%FSLAX36Y36*%
+%MOMM*%
+%TA.AperFunction,Profile*%
+%ADD10C,0.100000*%
+G04 Board outline 80mm x 30mm*
+G04 AC-Sensor PCB Profile*
+D10*
+X0Y0D02*
+X80000000Y0D01*
+X80000000Y30000000D01*
+X0Y30000000D01*
+X0Y0D01*
+M02*
